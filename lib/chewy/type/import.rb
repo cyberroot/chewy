@@ -88,11 +88,7 @@ module Chewy
             [body]
           end
 
-          puts options
-
           items = bodies.map do |body|
-            puts options.merge(header).merge(body: body)
-            
             result = client.bulk options.merge(header).merge(body: body)
             result.try(:[], 'items') || []
           end.flatten
